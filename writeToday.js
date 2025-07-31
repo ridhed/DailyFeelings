@@ -103,35 +103,18 @@ document.querySelectorAll('.btn').forEach(btn => {
     });
 });
 
-// Save to CSV logic
 document.getElementById('save-btn').addEventListener('click', function() {
     const feeling = document.querySelector('.btn.selected')?.textContent.trim() || '';
-    const feelInput = document.getElementById('feelInput').value.replace(/"/g, '""');
-    const wishInput = document.getElementById('wishInput').value.replace(/"/g, '""');
+    const feelInput = document.getElementById('feelInput').value;
+    const wishInput = document.getElementById('wishInput').value;
     const today = new Date().toISOString().split('T')[0];
 
-    // Prepare CSV row
-    const csvRow = `"${today}","${feeling}","${feelInput}","${wishInput}"\n`;
-
-    // Check if there's already a CSV in localStorage
-    let csvContent = localStorage.getItem('dailyFeelingsCSV');
-    if (!csvContent) {
-        // Add headers if first entry
-        csvContent = '"Date","Feeling","What Made Me Feel","Wish for Tomorrow"\n';
-    }
-    csvContent += csvRow;
-    localStorage.setItem('dailyFeelingsCSV', csvContent);
-
-    // Offer download
-    const blob = new Blob([csvContent], { type: 'text/csv' });
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'daily_feelings.csv';
-    a.click();
-
-    URL.revokeObjectURL(url);
-
-    alert('Saved and downloaded as CSV! You can open it in Excel.');
+    fetch('http://localhost:5000/save_feeling', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ date: today, feeling, feelInput, wishInput })
+    })
+    .then(res => res.json())
+    .then(data => alert('Saved to database!'))
+    .catch(() => alert('Failed to save.'));
 });
