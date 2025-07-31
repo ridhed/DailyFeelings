@@ -8,9 +8,9 @@ CORS(app)  # Allow requests from your frontend
 # Configure your MySQL connection
 db = mysql.connector.connect(
     host="localhost",
-    user="your_mysql_user",
-    password="your_mysql_password",
-    database="your_database"
+    user="root",
+    password="ridhed@#$",
+    database="dailyfeelings"
 )
 cursor = db.cursor()
 
