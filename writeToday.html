@@ -3,42 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="./styles.css">
-    <title>Daily feelings...</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Daily Feelings Journal</title>
 </head>
 <body>
     <div class="dashboardDiv">
+        <!-- Multiple Emotion Selection -->
         <div class="emotionDiv">
-            <h2>How I feel today ?</h2>
-            <div class="emoBtn">
-                <button id="btn1" class="btn"><img src="./assets/happy.png" alt="happy face">Happy</button>
-                <button id="btn2" class="btn"><img src="./assets/loved.png" alt="loved face">Loved</button>
-                <button id="btn3" class="btn"><img src="./assets/confident.png" alt="confident face">Confident</button>
-                <button id="btn4" class="btn"><img src="./assets/playful.png" alt="playful face">Playful</button>
-                <button id="btn5" class="btn"><img src="./assets/embarrassed.png" alt="embarrassed face">Embarrassed</button>
-                <button id="btn6" class="btn"><img src="./assets/angry.png" alt="angry face">Angry</button>
-                <button id="btn7" class="btn"><img src="./assets/scared.png" alt="scared face">Scared</button>
-                <button id="btn8" class="btn"><img src="./assets/sad.png" alt="sad face">Sad</button>                        
+            <h2>How I feel today?</h2>
+            <p>Select all that apply (click to select, adjust intensity)</p>
+            <div class="multi-emotion" id="multiEmotion">
+                <!-- Filled by JavaScript -->
             </div>
-
         </div>
 
+        <!-- Emotion Timeline -->
+        <div class="time-section">
+            <h2>How my emotions changed today</h2>
+            <div class="time-options">
+                <div>
+                    <label>Morning</label>
+                    <select class="time-emotion" id="morningEmotion">
+                        <option value="">Select...</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Afternoon</label>
+                    <select class="time-emotion" id="afternoonEmotion">
+                        <option value="">Select...</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Evening</label>
+                    <select class="time-emotion" id="eveningEmotion">
+                        <option value="">Select...</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Energy & Sleep Tracking -->
+        <div class="tracker-section">
+            <div>
+                <h2>Energy & Sleep</h2>
+                <div class="tracker-item">
+                    <label>Energy Level (1-10):</label>
+                    <input type="range" id="energyLevel" min="1" max="10" value="5">
+                    <span id="energyValue">5</span>
+                </div>
+                <div class="tracker-item">
+                    <label>Hours Slept:</label>
+                    <input type="number" id="hoursSlept" min="0" max="12" step="0.5" value="7.5">
+                </div>
+                <div class="tracker-item">
+                    <label>Sleep Quality:</label>
+                    <select id="sleepQuality">
+                        <option value="excellent">Excellent</option>
+                        <option value="good" selected>Good</option>
+                        <option value="fair">Fair</option>
+                        <option value="poor">Poor</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Gratitude Section -->
+            <div>
+                <h2>Gratitude</h2>
+                <p>Three things I'm grateful for today:</p>
+                <input type="text" class="gratitude-item" id="gratitude1" placeholder="First thing...">
+                <input type="text" class="gratitude-item" id="gratitude2" placeholder="Second thing...">
+                <input type="text" class="gratitude-item" id="gratitude3" placeholder="Third thing...">
+            </div>
+        </div>
+
+        <!-- Mood Influencers -->
+        <div class="influencers-section">
+            <h2>Mood Influencers</h2>
+            <div class="influencers">
+                <div class="influencer-category">
+                    <h3>Physical</h3>
+                    <div class="influencer-options" id="physicalInfluencers"></div>
+                </div>
+                <div class="influencer-category">
+                    <h3>Environmental</h3>
+                    <div class="influencer-options" id="environmentalInfluencers"></div>
+                </div>
+                <div class="influencer-category">
+                    <h3>Social</h3>
+                    <div class="influencer-options" id="socialInfluencers"></div>
+                </div>
+                <div class="influencer-category">
+                    <h3>Work/Productivity</h3>
+                    <div class="influencer-options" id="workInfluencers"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Existing sections -->
         <div class="bottomDiv">
             <div class="explainFeels">
-                <h2>What made me feel that way ?</h2>
+                <h2>What made me feel that way?</h2>
                 <textarea name="feelInput" id="feelInput" rows="4" cols="48"></textarea>
             </div>
 
             <div class="wishTmr">
-                <h2>What I wish for myself tomorrow ?</h2>
+                <h2>What I wish for myself tomorrow?</h2>
                 <textarea name="wishInput" id="wishInput" rows="4" cols="48"></textarea>
             </div>            
         </div>
+
+        <!-- Weekly Reflection -->
+        <div id="weeklyReflection" style="display: none;">
+            <h2>Weekly Reflection</h2>
+            <div>
+                <label>What emotions came up most this week?</label>
+                <textarea id="weeklyEmotions" rows="3" cols="48"></textarea>
+            </div>
+            <div>
+                <label>What helped me most when I was struggling?</label>
+                <textarea id="weeklyCoping" rows="3" cols="48"></textarea>
+            </div>
+            <div>
+                <label>What do I want to focus on next week?</label>
+                <textarea id="weeklyFocus" rows="3" cols="48"></textarea>
+            </div>
+        </div>
+
         <button id="save-btn">Save for today</button>
     </div>
 
-    
     <script src="writeToday.js"></script>
 </body>
 </html>
