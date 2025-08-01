@@ -4,23 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="./styles.css">
-    <title>Daily feelings...</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>My Feelings Journal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="mainDiv">
-        <div class="titleDiv">
-            <span class="text immobile">Today, I feel </span>
-            <span class="text mobile"></span>
-        </div>
+    <div class="container">
+        <header class="journal-header">
+            <h1>My Feelings Journal</h1>
+            <p class="subtitle">A safe space to reflect on your emotions</p>
+        </header>
 
-        <div class="btnDiv">
-            <a href="writeToday.html">
-                <button id="start-btn">Write feelings</button>
-            </a>
-        </div>
+        <main class="main-content">
+            <div class="welcome-message">
+                <div class="feelings-display">
+                    <span class="static-text">Today, I feel</span>
+                    <span class="dynamic-feeling" id="dynamicFeeling"></span>
+                </div>
+                <p class="intro-text">Taking time to acknowledge your feelings is an important act of self-care.</p>
+            </div>
+
+            <div class="action-buttons">
+                <a href="writeToday.html" class="primary-btn">
+                    <button id="start-btn">
+                        <span class="btn-icon">✍️</span>
+                        Write About My Day
+                    </button>
+                </a>
+                <button id="view-history-btn" class="secondary-btn">
+                    <span class="btn-icon">📅</span>
+                    View Past Entries
+                </button>
+            </div>
+
+            <div class="quote-container">
+                <p class="daily-quote" id="dailyQuote">"The only way out is through."</p>
+                <p class="quote-author">- Robert Frost</p>
+            </div>
+        </main>
+
+        <footer class="journal-footer">
+            <p>Created with ❤️ for your mental wellbeing</p>
+        </footer>
     </div>
 
     <script src="index.js"></script>
