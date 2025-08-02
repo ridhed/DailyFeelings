@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Add subtle animation to buttons on hover
-    const buttons = document.querySelectorAll('button');
+    const buttons = document.querySelectorAll('.primary-btn, .secondary-btn');
     buttons.forEach(button => {
         button.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-2px)';

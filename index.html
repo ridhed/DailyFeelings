@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles.css"> <!-- Added ./ -->
     <title>My Feelings Journal</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
@@ -26,16 +26,16 @@
             </div>
 
             <div class="action-buttons">
+                <!-- Fixed button nesting - removed button inside anchor -->
                 <a href="writeToday.html" class="primary-btn">
-                    <button id="start-btn">
-                        <span class="btn-icon">✍️</span>
-                        Write About My Day
-                    </button>
+                    <span class="btn-icon">✍️</span>
+                    Write About My Day
                 </a>
-                <button id="view-history-btn" class="secondary-btn">
+                <!-- Changed to anchor for consistency -->
+                <a href="#" id="view-history-btn" class="secondary-btn">
                     <span class="btn-icon">📅</span>
                     View Past Entries
-                </button>
+                </a>
             </div>
 
             <div class="quote-container">
