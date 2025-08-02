@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css"> <!-- Added ./ -->
+    <link rel="stylesheet" href="./styles.css">
     <title>My Feelings Journal</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
@@ -17,7 +17,7 @@
         </header>
 
         <main class="main-content">
-            <div class="welcome-message">
+            <div class="welcome-message card">
                 <div class="feelings-display">
                     <span class="static-text">Today, I feel</span>
                     <span class="dynamic-feeling" id="dynamicFeeling"></span>
@@ -26,19 +26,17 @@
             </div>
 
             <div class="action-buttons">
-                <!-- Fixed button nesting - removed button inside anchor -->
-                <a href="writeToday.html" class="primary-btn">
+                <a href="writeToday.html" class="btn btn-primary">
                     <span class="btn-icon">✍️</span>
                     Write About My Day
                 </a>
-                <!-- Changed to anchor for consistency -->
-                <a href="#" id="view-history-btn" class="secondary-btn">
+                <a href="#" id="view-history-btn" class="btn btn-secondary">
                     <span class="btn-icon">📅</span>
                     View Past Entries
                 </a>
             </div>
 
-            <div class="quote-container">
+            <div class="quote-container card">
                 <p class="daily-quote" id="dailyQuote">"The only way out is through."</p>
                 <p class="quote-author">- Robert Frost</p>
             </div>
