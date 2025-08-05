@@ -2,52 +2,53 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
-    <title>My Feelings Journal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Riddhi’s Celestial Journal</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Space+Mono&display=swap" rel="stylesheet" />
 </head>
 
 <body>
-    <div class="container">
-        <header class="journal-header">
-            <h1>My Feelings Journal</h1>
-            <p class="subtitle">A safe space to reflect on your emotions</p>
-        </header>
+    <canvas id="universeCanvas"></canvas>
+  <div class="container">
+    <header class="journal-header">
+      <h1>🌠 My Universe Within</h1>
+      <p class="subtitle">A cosmic journal to orbit your emotions and gratitude 🌌</p>
+    </header>
 
-        <main class="main-content">
-            <div class="welcome-message card">
-                <div class="feelings-display">
-                    <span class="static-text">Today, I feel</span>
-                    <span class="dynamic-feeling" id="dynamicFeeling"></span>
-                </div>
-                <p class="intro-text">Taking time to acknowledge your feelings is an important act of self-care.</p>
-            </div>
+    <main class="main-content">
+      <section class="welcome-message card">
+        <div class="feelings-display">
+          <span class="static-text">Today, I feel</span>
+          <span class="dynamic-feeling" id="dynamicFeeling"></span>
+        </div>
+        <p class="intro-text">Pause. Breathe. Reflect under your own stars ✨</p>
+      </section>
 
-            <div class="action-buttons">
-                <a href="writeToday.html" class="btn btn-primary">
-                    <span class="btn-icon">✍️</span>
-                    Write About My Day
-                </a>
-                <a href="#" id="view-history-btn" class="btn btn-secondary">
-                    <span class="btn-icon">📅</span>
-                    View Past Entries
-                </a>
-            </div>
+      <section class="action-buttons">
+        <a href="writeToday.html" class="btn btn-primary">
+          <span class="btn-icon">🪐</span>
+          Write About My Day
+        </a>
+        <a href="#" id="view-history-btn" class="btn btn-secondary">
+          <span class="btn-icon">📅</span>
+          View Past Entries
+        </a>
+      </section>
 
-            <div class="quote-container card">
-                <p class="daily-quote" id="dailyQuote">"The only way out is through."</p>
-                <p class="quote-author">- Robert Frost</p>
-            </div>
-        </main>
+      <section class="quote-container card">
+        <p class="daily-quote" id="dailyQuote">"The only way out is through."</p>
+        <p class="quote-author">- Robert Frost</p>
+      </section>
+    </main>
 
-        <footer class="journal-footer">
-            <p>Created with ❤️ for your mental wellbeing</p>
-        </footer>
-    </div>
+    <footer class="journal-footer">
+      <p>✨ Created with love and stars for your inner cosmos ✨</p>
+    </footer>
+  </div>
 
-    <script src="index.js"></script>
+  <script src="index.js"></script>
 </body>
 
 </html>
