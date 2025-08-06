@@ -1,137 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
-    <title>Daily Feelings Journal</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles.css" />
+  <title>Celestial Diary</title>
 </head>
+
 <body>
-    <div class="dashboardDiv">
-        <!-- Multiple Emotion Selection -->
-        <div class="emotionDiv card">
-            <h2 class="section-title">How I feel today?</h2>
-            <p>Select all that apply (click to select, adjust intensity)</p>
-            <div class="multi-emotion" id="multiEmotion">
-                <!-- Filled by JavaScript -->
-            </div>
+  <canvas id="universeCanvas"></canvas>
+  <div class="notebook-layout">
+    <aside class="emoji-sidebar left">
+      <div id="moodEmoji"></div>
+    </aside>
+
+    <main class="diary-page">
+      <!-- Date and Emotion Timeline at Top -->
+      <section class="emotion-timeline card">
+        <h2 class="section-title">Emotions Throughout Today — <span id="currentDate"></span></h2>
+        <div class="time-options">
+          <label>Morning:</label>
+          <select id="morningEmotion"></select>
+          <label>Afternoon:</label>
+          <select id="afternoonEmotion"></select>
+          <label>Evening:</label>
+          <select id="eveningEmotion"></select>
         </div>
+      </section>
 
-        <!-- Emotion Timeline -->
-        <div class="time-section card">
-            <h2 class="section-title">How my emotions changed today</h2>
-            <div class="time-options">
-                <div>
-                    <label>Morning</label>
-                    <select class="time-emotion" id="morningEmotion">
-                        <option value="">Select...</option>
-                    </select>
-                </div>
-                <div>
-                    <label>Afternoon</label>
-                    <select class="time-emotion" id="afternoonEmotion">
-                        <option value="">Select...</option>
-                    </select>
-                </div>
-                <div>
-                    <label>Evening</label>
-                    <select class="time-emotion" id="eveningEmotion">
-                        <option value="">Select...</option>
-                    </select>
-                </div>
-            </div>
+      <!-- Primary Reflections -->
+      <section class="reflection-questions">
+        <div class="card">
+          <h2 class="section-title">🌞 What did I feel today?</h2>
+          <textarea id="feelInput" rows="5" placeholder="Describe your day emotionally..."></textarea>
         </div>
-
-        <!-- Energy & Sleep Tracking -->
-        <div class="tracker-section">
-            <div class="card">
-                <h2 class="section-title">Energy & Sleep</h2>
-                <div class="tracker-item">
-                    <label>Energy Level (1-10):</label>
-                    <input type="range" id="energyLevel" min="1" max="10" value="5">
-                    <span id="energyValue">5</span>
-                </div>
-                <div class="tracker-item">
-                    <label>Hours Slept:</label>
-                    <input type="number" id="hoursSlept" min="0" max="12" step="0.5" value="7.5">
-                </div>
-                <div class="tracker-item">
-                    <label>Sleep Quality:</label>
-                    <select id="sleepQuality">
-                        <option value="excellent">Excellent</option>
-                        <option value="good" selected>Good</option>
-                        <option value="fair">Fair</option>
-                        <option value="poor">Poor</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Gratitude Section -->
-            <div class="card">
-                <h2 class="section-title">Gratitude</h2>
-                <p>Three things I'm grateful for today:</p>
-                <input type="text" class="gratitude-item" id="gratitude1" placeholder="First thing...">
-                <input type="text" class="gratitude-item" id="gratitude2" placeholder="Second thing...">
-                <input type="text" class="gratitude-item" id="gratitude3" placeholder="Third thing...">
-            </div>
+        <div class="card">
+          <h2 class="section-title">🌙 What do I wish for tomorrow?</h2>
+          <textarea id="wishInput" rows="5" placeholder="Set an intention for tomorrow..."></textarea>
         </div>
+      </section>
 
-        <!-- Mood Influencers -->
-        <div class="influencers-section card">
-            <h2 class="section-title">Mood Influencers</h2>
+      <!-- Tabbed Section for Gratitude & Influencers -->
+      <section class="tabs-section card">
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-tab="gratitude">Gratitude</button>
+          <button class="tab-btn" data-tab="influencers">Mood Influencers</button>
+        </div>
+        <div class="tab-content">
+          <div id="gratitude" class="tab-panel active">
+            <p>✨ Three things I'm grateful for:</p>
+            <input type="text" id="gratitude1" placeholder="First thing...">
+            <input type="text" id="gratitude2" placeholder="Second thing...">
+            <input type="text" id="gratitude3" placeholder="Third thing...">
+          </div>
+
+          <div id="influencers" class="tab-panel">
             <div class="influencers">
-                <div class="influencer-category">
-                    <h3>Physical</h3>
-                    <div class="influencer-options" id="physicalInfluencers"></div>
-                </div>
-                <div class="influencer-category">
-                    <h3>Environmental</h3>
-                    <div class="influencer-options" id="environmentalInfluencers"></div>
-                </div>
-                <div class="influencer-category">
-                    <h3>Social</h3>
-                    <div class="influencer-options" id="socialInfluencers"></div>
-                </div>
-                <div class="influencer-category">
-                    <h3>Work/Productivity</h3>
-                    <div class="influencer-options" id="workInfluencers"></div>
-                </div>
+              <div class="influencer-category">
+                <h3>Physical</h3>
+                <div class="influencer-options" id="physicalInfluencers"></div>
+              </div>
+              <div class="influencer-category">
+                <h3>Environmental</h3>
+                <div class="influencer-options" id="environmentalInfluencers"></div>
+              </div>
+              <div class="influencer-category">
+                <h3>Social</h3>
+                <div class="influencer-options" id="socialInfluencers"></div>
+              </div>
+              <div class="influencer-category">
+                <h3>Work/Productivity</h3>
+                <div class="influencer-options" id="workInfluencers"></div>
+              </div>
             </div>
+          </div>
         </div>
+      </section>
 
-        <!-- Reflection Sections -->
-        <div class="bottomDiv">
-            <div class="card explainFeels">
-                <h2 class="section-title">What made me feel that way?</h2>
-                <textarea name="feelInput" id="feelInput" rows="4"></textarea>
-            </div>
+      <button id="save-btn" class="btn btn-primary">Save Entry</button>
+    </main>
 
-            <div class="card wishTmr">
-                <h2 class="section-title">What I wish for myself tomorrow?</h2>
-                <textarea name="wishInput" id="wishInput" rows="4"></textarea>
-            </div>            
-        </div>
+    <aside class="emoji-sidebar right">
+      <div id="emojiSuggestions"></div>
+    </aside>
+  </div>
 
-        <!-- Weekly Reflection -->
-        <div class="card" id="weeklyReflection" style="display: none;">
-            <h2 class="section-title">Weekly Reflection</h2>
-            <div>
-                <label>What emotions came up most this week?</label>
-                <textarea id="weeklyEmotions" rows="3"></textarea>
-            </div>
-            <div>
-                <label>What helped me most when I was struggling?</label>
-                <textarea id="weeklyCoping" rows="3"></textarea>
-            </div>
-            <div>
-                <label>What do I want to focus on next week?</label>
-                <textarea id="weeklyFocus" rows="3"></textarea>
-            </div>
-        </div>
+  <script src="writeToday.js"></script>
+  <script>
+    // Set current date
+    document.getElementById('currentDate').textContent = new Date().toLocaleDateString();
 
-        <button id="save-btn" class="btn btn-primary">Save for today</button>
-    </div>
-
-    <script src="writeToday.js"></script>
+    // Tab switching logic
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
 </body>
+
 </html>
